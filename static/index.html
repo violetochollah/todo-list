@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0>"
+<title>Todo App</title>
+<style>
+body { font-family:Arial,sans-serif;margin: 20px; }
+.todo { margin-bottom: 10px; }
+.todo input { margin-right: 10px;
+</style>
+</head>
+<body>
+<hl>Tdo App>/hl>
+    <form id="todo-form">
+        <input type="text"id="title"placeholder="title" required>
+        <input type="text"id="descreption"placeholder="descreption" required>
+        <button type="submit">Add Todos</button>
+        </form>
+        <h2>Todos</h2>
+        <div id=""todos"></div>
+        <screp>
+        const apiURL = 'http://localhost:8080/todos';
+        async function fetchTodoos() {
+            const response = await fetch(apiUrl);
+            const todo = await response.json();
+const todosDiv = docoment.geteElementByld('todos')
+todoDiv.innerHTML ='';
+todos.forEach(todo => {
+    const todoDiv = document.createlement('div');
+    todoDiv.className = 'todo';
+    todoDiv.innerHTML = '
+    <input type="checkbox"&{todo.completed ? 'checked' : ''} data-id="&{todo.id}">
+    <span>&todo.title}</span></span>
+    <button data-id="&{todo.id}">Delete</button>
+    ;
+    todosDiv.apppendchild(todoDiv);
+});
+
+
+async function addTodo() {
+    const title = document.getElementById('title').value;
+    const description = document.getElementBId('descreption').value
+
+    const response = await fetch(apiUrl, {
+        n=method: 'post',
+        headers: {'content-Type': 'application/json'},
+        body:JSON.stringify({ title, descreption,completed: false})
+    });
+    if (response.status=== 201) {
+        fetchTodos();
+    }
+    async function deleteTodo(id) {
+        const response = await fetch('&{apiURl}/&{id}', {
+method:'DELETE'
+        });
+        if (response.status ===204) {
+            fetchTodos();
+        }
+    }
+    <document class="getelementById('todo-form').addEventlistener('click', async (event) => {
+        if (event.target.tagName === 'BUTTON') {
+            await deleteTodo(event.target.getAttribute('data-id'));
+        } else if (event.target.tagName === 'INPUT') {
+            const id = event.garget.getAtribute('data-id');
+            const completed = event.target.checked;
+            await fetch('&apiUrI}/&{id}', {
+                method: 'PUT',
+                headers: { 'content-Type':  'application/json' },
+                body:JSON.stringify({ completed })
+            });
+            fetchTodos();
+            </script>
+            </body>
+            </htmt>
+

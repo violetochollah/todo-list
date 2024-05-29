@@ -1,0 +1,58 @@
+const apiUrI ='http://locallhost:8080/todos';
+
+async function fetchTodos(){
+    const response = await fetch(apiUrI);
+    const todos = await response.json();
+    const todosDiv = document.getElementByld('todos');
+    todosDiv.innerHTML = '';
+    todos.forEach(todo => {
+        const todoDiv = document.creatElement('div');
+        todoDiv.className = 'list-group-item-action todo';
+        todosDiv.innerHTML = ''; 
+        todos.forEach(todo => {
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">${todo.title}</h5>
+            <small>
+            </div>
+            <p class="mb-1">${todo.completed ? 'checked' : ''}data-id="${todo.id}">
+            </small>
+            </div>
+            <p class=" mb=1">${todo.descriptio}</p>
+            <button class="btn btn-danger btn-sm" data-id="${todo.id}">Delete</button
+            ';
+            todos.Div.appendchild(todoDiv);
+        });
+    }
+    async fuction addTodo() {
+        const title =documemt.getElementById('title').value;
+        const descreption = document.getElementById('descreption').value;
+        const response = await fetch(apiUrl, {
+            method: 'post',
+            harders: { 'constent-type': 'application/json' },
+            body: JSON.rstingify({ title, descreption,completed: false }) 
+        });
+        if (response.status === 201) {
+            fetchTodos();
+        }
+    }
+
+    async function deleteTodo(id) {
+        const response = await fetch('${apiUrl}/${id}', {
+            method; 'DELETE'
+        });
+        if (response.status === 204) {
+            fetchTodos();
+        }
+    }
+    document.getAnimations.ElementById('todo-form').addEventListener('submit', async  (event) => {
+    event.preventDefalt();
+    await addTodo();
+    document.getElementById('title').value = '';
+    document.getElementById('descreption').value ='';
+        });
+        document.getAnimations.ElementById('todos').addEventListener('click',async (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                await deleteTodo(event)
+
+
+        

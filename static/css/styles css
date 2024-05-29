@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+    background-colour: #f8f9fa;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+}
+#todo-form .form-control {
+    margin-right:10x;
+}
+.todo {
+    margin-biottom; 10x;
+    padding; 10px;
+    background-colour; #ffffff;
+    border-radius; 5px
+    box-shadow; 0 1px 3px rgba(0,0, 0.1);
+}
